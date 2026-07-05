@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky Passport Consultancy | Professional Services</title>
+    <style>
+        :root { --primary: #0056b3; --accent: #25D366; --bg: #f8f9fa; }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg); margin: 0; color: #333; }
+        
+        /* Modern Container */
+        .hero { background: linear-gradient(135deg, var(--primary), #007bff); color: white; padding: 60px 20px; text-align: center; }
+        .container { max-width: 600px; margin: -40px auto 40px; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        
+        /* Modern Form Styling */
+        input, select { width: 100%; padding: 14px; margin: 10px 0; border: 2px solid #eee; border-radius: 10px; font-size: 16px; box-sizing: border-box; }
+        button { width: 100%; padding: 16px; background: var(--accent); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; transition: transform 0.2s; }
+        button:hover { transform: translateY(-2px); filter: brightness(1.1); }
+        
+        .service-info { font-size: 0.9em; color: #666; margin-bottom: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>Sky Passport Consultancy</h1>
+    <p>10 Years of Expertise • 155+ Happy Clients</p>
+</div>
+
+<div class="container">
+    <form id="passportForm" onsubmit="sendToWhatsApp(event)">
+        <h2 style="text-align: center;">Book Your Service</h2>
+        
+        <label>Select Service</label>
+        <select id="serviceType" required>
+            <option value="New Passport">New Passport (Gov: ₹2500)</option>
+            <option value="Emergency/Tatkal">Emergency (Gov: ₹5000)</option>
+            <option value="Minor Passport">Minor Passport (Gov: ₹1750)</option>
+            <option value="Lost/Damage">Lost or Damage (Gov: ₹5000)</option>
+            <option value="PCC Certificate">PCC Certificate (Gov: ₹750)</option>
+        </select>
+
+        <label>Number of People</label>
+        <input type="number" id="peopleCount" value="1" min="1" required>
+
+        <label>Your Full Name</label>
+        <input type="text" id="userName" placeholder="e.g. Harshad Sadhu" required>
+
+        <button type="submit">Submit Request via WhatsApp</button>
+    </form>
+    
+    <p class="service-info">Consulting fee of ₹750 applies to all services.</p>
+</div>
+
+<script>
+    function sendToWhatsApp(event) {
+        event.preventDefault();
+        const service = document.getElementById('serviceType').value;
+        const count = document.getElementById('peopleCount').value;
+        const name = document.getElementById('userName').value;
+        const msg = `Hello Aakashbhai, I'd like to book: ${service}. People: ${count}. Name: ${name}.`;
+        window.location.href = `https://wa.me/918980449653?text=${encodeURIComponent(msg)}`;
+    }
+</script>
+</body>
+</html>
